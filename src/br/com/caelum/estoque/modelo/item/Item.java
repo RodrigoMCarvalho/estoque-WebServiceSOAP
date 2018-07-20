@@ -5,11 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement  //essa anotação indica que o valor da classe será representado como um elemento XML principal;
+@XmlAccessorType(XmlAccessType.FIELD)  //indica que as anotações estão ou nos atributos ou nos métodos da classe;
 public class Item {
 	
-	@XmlElement(name="codigo")
+	@XmlElement(name="codigo")  //usada nos atributos ou métodos. Indica que o atributo será uma tag do xml;
 	private String codigo;
 	private String nome;
 	private String tipo;

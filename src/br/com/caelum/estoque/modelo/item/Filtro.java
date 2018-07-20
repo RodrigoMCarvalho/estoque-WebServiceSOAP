@@ -4,8 +4,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement  //essa anotação indica que o valor da classe será representado como um elemento XML principal;
+@XmlAccessorType(XmlAccessType.FIELD) //indica que as anotações estão ou nos atributos ou nos métodos da classe;
 public class Filtro {
 
 	private TipoItem tipo;

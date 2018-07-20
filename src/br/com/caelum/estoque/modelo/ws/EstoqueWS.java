@@ -11,6 +11,7 @@ import br.com.caelum.estoque.modelo.item.Filtros;
 import br.com.caelum.estoque.modelo.item.Item;
 import br.com.caelum.estoque.modelo.item.ItemDao;
 import br.com.caelum.estoque.modelo.item.ListaItens;
+import br.com.caelum.estoque.modelo.usuario.AutorizacaoException;
 import br.com.caelum.estoque.modelo.usuario.TokenDao;
 import br.com.caelum.estoque.modelo.usuario.TokenUsuario;
 
@@ -29,10 +30,14 @@ public class EstoqueWS {
 	@WebMethod(operationName="CadastrarItem")
 	@WebResult(name="item")
 	public Item cadastraItem(@WebParam(name="token", header=true) TokenUsuario token, 
-			@WebParam(name="item") Item item) {
+			@WebParam(name="item") Item item) throws AutorizacaoException {
 		
-		System.out.println("Cadastrando o item " + item);
+		System.out.println("Cadastrando o Item " + item + ", Token " + token);
 		boolean valido = new TokenDao().ehValido(token);
+		if(!valido) {
+			throw new AutorizacaoException("Falha da autorização!");
+		}
+		
 		this.dao.cadastrar(item);
 		return item;
 	}
