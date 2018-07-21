@@ -1,5 +1,7 @@
 package br.com.caelum.estoque.modelo.usuario;
 
+import java.util.Date;
+
 import javax.xml.ws.WebFault;
 
 @SuppressWarnings("serial")
@@ -10,8 +12,8 @@ public class AutorizacaoException extends Exception {
 		super(mensagem);
 	}
 	
-	public String getFaultInfo() {
-		return "Token inválido!";
+	public InfoFault getFaultInfo() {
+		return new InfoFault("Token inválido!", new Date());
 	}
 	
 }
